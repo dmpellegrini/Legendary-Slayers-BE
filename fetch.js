@@ -3,12 +3,26 @@ import fetch from 'node-fetch'
 import {promises as fsPromises} from 'fs'
 import axios from 'axios'
 
-const charURL = 'http://ddragon.leagueoflegends.com/cdn/12.21.1/data/en_US/champion/Aatrox.json'
+const charsURL = 'http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json'
 
-async function fetchChampion(charEndPoint) {
+// Fetches Character Names and Images
+async function fetchAllChars(url){
+  const characters = []
+  const response = await axios(url)
+  const allChars = await response.data.data
+  for (let char in allChars) {
+    characters.push(await fetchCharacter(char))
+  }
+  console.log(characters)
+  return characters  
+}
+
+// Fetches Individual Character data
+async function fetchCharacter(charName) {
+  const charURL = `http://ddragon.leagueoflegends.com/cdn/12.21.1/data/en_US/champion/${charName}.json`
   const response = await axios(charURL)
   const charData = response.data.data
-  const { name, title, image, tags, partype, lore, blurb, spells, passive } = charData.Aatrox
+  const { name, title, image, tags, partype, lore, blurb, spells, passive } = charData[charName]
   const character = {
     name: name,
     title: title,
@@ -48,8 +62,9 @@ async function fetchChampion(charEndPoint) {
       image_sprite: passive.image.sprite 
     }
   }
-  console.log(character)
+  // console.log(character)
   return character
 }
 
-fetchChampion(charURL)
+fetchAllChars(charsURL)
+
