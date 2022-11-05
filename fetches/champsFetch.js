@@ -71,7 +71,7 @@ async function fetchAllChars(url){
     characters.push(character)
     console.log(`Retrieved ${character.name}`)
   }
-  await fsPromises.writeFile("champs.json", JSON.stringify(characters))
+  await fsPromises.writeFile("./jsonData/champsTest.json", JSON.stringify(characters))
   return characters  
 }
 
