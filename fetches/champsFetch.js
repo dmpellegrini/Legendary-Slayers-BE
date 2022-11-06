@@ -1,5 +1,4 @@
 // This is the file that fetches data from the LOL API
-import fetch from 'node-fetch'
 import {promises as fsPromises} from 'fs'
 import axios from 'axios'
 
@@ -16,7 +15,7 @@ async function fetchCharacter(charName) {
   const imgSpellURL = `http://ddragon.leagueoflegends.com/cdn/12.21.1/img/spell/`
   const response = await axios(charURL)
   const charData = response.data.data
-  const { name, title, image, tags, partype, lore, blurb, spells, passive } = charData[charName]
+  const { name, title, tags, partype, lore, blurb, spells, passive } = charData[charName]
   const character = {
     name: name,
     title: title,
@@ -72,12 +71,8 @@ async function fetchAllChars(url){
     characters.push(character)
     console.log(`Retrieved ${character.name}`)
   }
-  await fsPromises.writeFile("champs.json", JSON.stringify(characters))
+  await fsPromises.writeFile("./jsonData/champsTest.json", JSON.stringify(characters))
   return characters  
 }
 
 fetchAllChars(charsURL)
-
-
-
-
