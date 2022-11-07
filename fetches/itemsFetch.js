@@ -5,7 +5,7 @@ const itemURL = "http://ddragon.leagueoflegends.com/cdn/12.21.1/data/en_US/item.
 
 
 function makeItem(itemData) {
-  const { name, plaintext, image, gold, stats } = itemData
+  const { name, plaintext, image, gold, stats, tags } = itemData
   const imgURL = `https://ddragon.leagueoflegends.com/cdn/12.21.1/img/item/`
   const item = {
     name: name,
@@ -13,7 +13,8 @@ function makeItem(itemData) {
     full_image: imgURL + image.full,
     buy_price: gold.base,
     sell_price: gold.sell,
-    stats: stats
+    stats: stats,
+    tags: tags 
   }
   return item
 }
