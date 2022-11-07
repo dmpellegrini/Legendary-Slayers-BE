@@ -67,4 +67,3 @@ async function fetchCharacter(charName) {
 }
 
 fetchAllChars(charsURL)
-
