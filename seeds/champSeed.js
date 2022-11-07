@@ -20,33 +20,37 @@ const champData = data.map(item => {
       id: item.spells[0].id,
       name: item.spells[0].name,
       description: item.spells[0].description,
-      image_sprite: item.spells[0].image_sprite
+      image_sprite: item.spells[0].image_sprite,
+      video: item.spells[0].video
     },
     {
       id: item.spells[1].id,
       name: item.spells[1].name,
       description: item.spells[1].description,
-      image_sprite: item.spells[1].image_sprite
+      image_sprite: item.spells[1].image_sprite,
+      video: item.spells[1].video
     },
     {
       id: item.spells[2].id,
       name: item.spells[2].name,
       description: item.spells[2].description,
-      image_sprite: item.spells[2].image_sprite
+      image_sprite: item.spells[2].image_sprite,
+      video: item.spells[2].video
     },
     {
       id: item.spells[3].id,
       name: item.spells[3].name,
       description: item.spells[3].description,
-      image_sprite: item.spells[3].image_sprite
+      image_sprite: item.spells[3].image_sprite,
+      video: item.spells[3].video
     }
   ]
   champion.passive = {
     name: item.passive.name,
     description: item.passive.description,
-    image_sprite: item.passive.image_sprite
+    image_sprite: item.passive.image_sprite,
+    video: item.passive.video
   }
-  console.log(champion.skins)
   return champion
 })
 

@@ -17,30 +17,35 @@ const champSchema = new mongoose.Schema({
       name: String,
       description: String,
       image_sprite: String,
+      video: String,
     },
     {
       id: String,
       name: String,
       description: String,
       image_sprite: String,
+      video: String,
     },
     {
       id: String,
       name: String,
       description: String,
       image_sprite: String,
+      video: String,
     },
     {
       id: String,
       name: String,
       description: String,
       image_sprite: String,
+      video: String,
     },
   ],
   passive: {
     name: String,
     description: String,
     image_sprite: String,
+    video: String,
   },
 })
 
