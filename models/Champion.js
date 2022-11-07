@@ -10,6 +10,7 @@ const champSchema = new mongoose.Schema({
   partype: String,
   lore: String,
   blurb: String,
+  skins: [{}],
   spells: [
     {
       id: String,
