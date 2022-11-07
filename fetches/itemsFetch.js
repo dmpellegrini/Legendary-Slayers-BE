@@ -25,7 +25,7 @@ async function fetchAllItems(url) {
   for (let item in itemData) {
     items.push(makeItem(itemData[item]))
   }
-  fsPromises.writeFile("./jsonData/itemsTest.json", JSON.stringify(items))
+  fsPromises.writeFile("./jsonData/items.json", JSON.stringify(items))
   return items
 }
 
