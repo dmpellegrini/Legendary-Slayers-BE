@@ -61,6 +61,7 @@ async function fetchCharacter(charName) {
   return character
 }
 
+
 // Fetches All Character Data and Makes JSON File
 async function fetchAllChars(url){
   const characters = []
