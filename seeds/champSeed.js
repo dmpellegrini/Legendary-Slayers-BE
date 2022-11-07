@@ -14,6 +14,7 @@ const champData = data.map(item => {
   champion.partype = item.partype
   champion.lore = item.lore
   champion.blurb = item.blurb
+  champion.skins = item.skins
   champion.spells = [
     {
       id: item.spells[0].id,
@@ -45,6 +46,7 @@ const champData = data.map(item => {
     description: item.passive.description,
     image_sprite: item.passive.image_sprite
   }
+  console.log(champion.skins)
   return champion
 })
 
