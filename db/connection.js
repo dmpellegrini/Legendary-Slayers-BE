@@ -5,12 +5,12 @@ let mongooseConfig = {
   useUnifiedTopology: true
 }
 
-// const url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/Legendary_Slayers_db'
-const connectionString = 'mongodb://127.0.0.1:27017/Legendary_Slayers_db'
+const url = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/Legendary_Slayers_db'
+// const connectionString = 'mongodb://127.0.0.1:27017/Legendary_Slayers_db'
 
 // Establishes connection to mongoose using proper configuration
 // 127.0.0.1 Is equivalent to "localhost
-mongoose.connect(connectionString, mongooseConfig)
+mongoose.connect(url, mongooseConfig)
 
 // Establishes connection event listener
 mongoose.connection.on('connected', () => console.log('Connected to database!'))
