@@ -15,6 +15,11 @@ router.get("/name/:name", (req,res) => {
     .then(item => res.json(item))
 })
 
+router.get("/id/:id", (req,res) => {
+  Item.find({_id: req.params.id})
+    .then(item => res.json(item))
+})
+
 router.get("/tags/:tag", (req,res) => {
   Item.find({tags: req.params.tag})
     .then(item => res.json(item))
