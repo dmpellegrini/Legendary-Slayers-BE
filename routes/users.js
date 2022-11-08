@@ -82,7 +82,10 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/name/:name", (req, res) => {
-  User.find({ userName: req.params.name }).then((user) => res.json(user));
+  User.find({ userName: req.params.name })
+    .populate("favCharacters")
+    .populate("favItems")
+    .then((user) => res.json(user));
 });
 
 router.delete("/name/:name", (req, res) => {
