@@ -4,8 +4,10 @@ const itemSchema = new mongoose.Schema({
   name: String,
   plaintext: String,
   full_image: String,
-  buy_price: String,
-  sell_price: String,
+  base_price: Number,
+  total_price: Number,
+  sell_price: Number,
+  purchasable: Boolean,
   stats: {},
   tags: [String], 
   

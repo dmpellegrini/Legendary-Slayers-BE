@@ -11,8 +11,10 @@ function makeItem(itemData) {
     name: name,
     plaintext: plaintext,
     full_image: imgURL + image.full,
-    buy_price: gold.base,
+    base_price: gold.base,
+    total_price: gold.total,
     sell_price: gold.sell,
+    purchasable: gold.purchasable,
     stats: stats,
     tags: tags 
   }
