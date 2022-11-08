@@ -19,16 +19,42 @@ const today = new Date();
 const exp = new Date(today);
 exp.setDate(today.getDate() + 30);
 
-router.post("/signUp", (req, res) => {
-  User.create(req.body).then((user) => res.json(user));
+router.post("/signUp", async (req, res) => {
+  try {
+    const { userName, passWord } = req.body;
+    const password_digest = await bcrypt.hash(passWord, SALT_ROUNDS);
+    const user = new User({
+      userName,
+      password_digest,
+      favItems: [],
+      favCharacters: [],
+    });
+
+    await user.save();
+
+    const payload = {
+      id: user._id,
+      userName: user.userName,
+      favItems: user.favItems,
+      favCharacters: user.favCharacters,
+      exp: parseInt(exp.getTime() / 1000),
+    };
+
+    const token = jwt.sign(payload, TOKEN_KEY);
+    res.status(201).json({ token });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
 });
 
 router.post("/signIn", async (req, res) => {
   try {
     const { userName, passWord } = req.body;
     const user = await User.findOne({ userName: userName }).select(
-      "username email password_digest"
+      "userName password_digest"
     );
+    console.log(user);
     if (await bcrypt.compare(passWord, user.password_digest)) {
       const payload = {
         id: user._id,
