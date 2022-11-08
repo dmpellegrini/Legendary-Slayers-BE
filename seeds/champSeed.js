@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 import connection from '../db/connection.js'
 import data from '../jsonData/champs.json' assert {type: 'json'}
 import Champion from '../models/Champion.js'
