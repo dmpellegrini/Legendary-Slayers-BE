@@ -84,6 +84,7 @@ router.get("/all", (req, res) => {
 router.get("/name/:name", (req, res) => {
   User.find({ userName: req.params.name })
     .populate("favCharacters")
+    .populate("favItems")
     .then((user) => res.json(user));
 });
 
