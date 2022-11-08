@@ -11,5 +11,12 @@
     "node-fetch": "^3.2.10",
     "nodemon": "^2.0.20"
   },
+  "scripts": {
+    "start": "node server.js",
+    "champSeed": "node seeds/champSeed.js",
+    "itemSeed": "node seeds/itemSeed.js",
+    "userSeed": "node seeds/userSeed.js",
+    "seedAll": "node seeds/champSeed.js; node seeds/itemSeed.js; node seeds/userSeed.js"
+  },
   "type": "module"
 }
