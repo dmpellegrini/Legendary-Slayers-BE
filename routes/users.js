@@ -25,10 +25,22 @@ router.delete("/name/:name", (req, res) => {
     .then(user => res.json(user))
 })
 
-router.put("/name/:name", (req, res) => {
-  User.findOneAndUpdate(
-    {userName: req.params.name},req.body, {new: true})
-    .then(user => res.json(user))
+router.put("/name/:name/champions/:id", (req, res) => {
+  User.findOne({userName: req.params.name})
+  .then(user => {
+    user.favCharacters.push(req.params.id)
+    user.save()
+    res.json(user)
+  })
+})
+
+router.put("/name/:name/items/:id", (req, res) => {
+  User.findOne({userName: req.params.name})
+  .then(user => {
+    user.favItems.push(req.params.id)
+    user.save()
+    res.json(user)
+  })
 })
 
 export default router
