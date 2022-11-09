@@ -94,9 +94,9 @@ router.delete("/name/:name", (req, res) => {
 
 router.put("/name/:name/champions/:id", (req, res) => {
   User.findOne({ userName: req.params.name }).then((user) => {
-    if(user.favCharacters.includes(req.params.id)) {
+    if (user.favCharacters.includes(req.params.id)) {
       res.json(user);
-    }else {
+    } else {
       user.favCharacters.push(req.params.id);
       user.save();
       res.json(user);
@@ -106,7 +106,7 @@ router.put("/name/:name/champions/:id", (req, res) => {
 
 router.put("/name/:name/items/:id", (req, res) => {
   User.findOne({ userName: req.params.name }).then((user) => {
-    if(user.favItems.includes(req.params.id)){
+    if (user.favItems.includes(req.params.id)) {
       res.json(user);
     } else {
       user.favItems.push(req.params.id);
@@ -118,12 +118,12 @@ router.put("/name/:name/items/:id", (req, res) => {
 
 router.put("/name/:name/champions/delete/:id", (req, res) => {
   User.findOne({ userName: req.params.name }).then((user) => {
-    if(user.favCharacters.includes(req.params.id)) {
-      const index = user.favCharacters.indexOf(req.params.id)
-      user.favCharacters.splice(index, 1)
+    if (user.favCharacters.includes(req.params.id)) {
+      const index = user.favCharacters.indexOf(req.params.id);
+      user.favCharacters.splice(index, 1);
       user.save();
       res.json(user);
-    }else {
+    } else {
       res.json(user);
     }
   });
@@ -131,15 +131,28 @@ router.put("/name/:name/champions/delete/:id", (req, res) => {
 
 router.put("/name/:name/items/delete/:id", (req, res) => {
   User.findOne({ userName: req.params.name }).then((user) => {
-    if(user.favItems.includes(req.params.id)) {
-      const index = user.favItems.indexOf(req.params.id)
-      user.favItems.splice(index, 1)
+    if (user.favItems.includes(req.params.id)) {
+      const index = user.favItems.indexOf(req.params.id);
+      user.favItems.splice(index, 1);
       user.save();
       res.json(user);
-    }else {
+    } else {
       res.json(user);
     }
   });
+});
+
+router.get("/verify", async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const payload = jwt.verify(token, TOKEN_KEY);
+    if (payload) {
+      res.json(payload);
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(401).send("Not Authorized");
+  }
 });
 
 export default router;
