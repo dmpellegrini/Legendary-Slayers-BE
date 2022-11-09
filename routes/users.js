@@ -52,7 +52,7 @@ router.post("/signIn", async (req, res) => {
   try {
     const { userName, passWord } = req.body;
     const user = await User.findOne({ userName: userName }).select(
-      "userName password_digest"
+      "userName password_digest favItems favCharacters"
     );
     console.log(user);
     if (await bcrypt.compare(passWord, user.password_digest)) {
