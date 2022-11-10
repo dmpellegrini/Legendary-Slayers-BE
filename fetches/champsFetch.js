@@ -22,7 +22,7 @@ async function fetchCharacter(charName) {
   const allSkins = skins.map((element) => {
     const skin = {}
     skin.name = element.name
-    skin.image = skinURL + name + `_${element.num}.jpg` 
+    skin.image = skinURL + charName + `_${element.num}.jpg` 
     return skin
   }) 
   const character = {
