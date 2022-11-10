@@ -130,17 +130,5 @@ To return an items data based on sell price, simply append "/sell_price" followe
 
 ## Users
 
+We are delibrately keeping these obfuscated in the code so people are not encouraged to mess with our users.
 
-### Get All Users
-To fetch a list of all users go to the following endpoint. 
-<!-- Link -->
-[https://legendary-slayers-be-production.up.railway.app/users/all](https://legendary-slayers-be-production.up.railway.app/users/all)
-
-### Get User By Name
-To fetch a single user by name, append "/name" followed by "/<user_name>" to get a single user. For example this endpoint goes to the Slayer user. 
-<!-- Link -->
-[https://legendary-slayers-be-production.up.railway.app/users/name/Slayer](https://legendary-slayers-be-production.up.railway.app/users/name/Slayer)
-
-### Update User By Name
-<!-- Link -->
-[https://legendary-slayers-be-production.up.railway.app/users/name/Slayer](https://legendary-slayers-be-production.up.railway.app/users/name/Slayer)
